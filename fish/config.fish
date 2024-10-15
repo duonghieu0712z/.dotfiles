@@ -2,15 +2,27 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 set omp_theme '~/.config/oh-my-posh/mytheme.omp.json'
 oh-my-posh init fish --config $omp_theme | source
 
 zoxide init fish | source
 
-# set -gx EDITOR nvim
-# set -gx EDITOR 'code --wait'
-# set -gx VISUAL 'code --wait'
+fzf --fish | source
 
-# set -gx PATH $PATH ~/.fnm ~/.yarn/bin ~/.composer/vendor/bin
+set -gx EDITOR '/usr/local/bin/code'
+set -gx VISUAL $EDITOR
 
-# test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+set -gx FZF_DEFAULT_OPTS '--layout=reverse --border --preview="bat {}"'
+
+set -gxa LDFLAGS "-L/opt/homebrew/opt/curl/lib"
+set -gxa CPPFLAGS "-I/opt/homebrew/opt/curl/include"
+
+set -gxa LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
+set -gxa CPPFLAGS "-I/opt/homebrew/opt/llvm/include"
+
+set -gx LDFLAGS "-L/opt/homebrew/opt/node@20/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/node@20/include"
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
