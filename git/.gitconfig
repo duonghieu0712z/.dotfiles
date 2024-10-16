@@ -2,7 +2,7 @@
 	defaultBranch = main
 [user]
 	name = Hieu Cao
-	email = hieu.cao@enotion.io
+	email = hieu.cao@seatudio.com
 [core]
 	ignorecase = false
 	editor = code --wait
@@ -19,12 +19,14 @@
 	rv = remote -v
 	new = co -b
 	del = br -D
+	cp = cherry-pick
 	subclone = submodule update --init
 	subeach = submodule foreach
 	subco = subeach git co
 	subpull = subeach git pull -p
 	forcebr = "!f() { git br -f $1 HEAD; }; f"
 	squash = "!f() { git rebase -i HEAD~$1; }; f"
+	sq = squash
 	ours = "!f() { git co --ours $@ && git add $@; }; f"
 	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 	undo = reset --soft HEAD^
@@ -35,6 +37,7 @@
 	spop = stash pop
 	sdrop = stash drop
 	sclear = stash clear
+	parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
 
 [mergetool]
 	prompt = true
@@ -65,5 +68,13 @@
 [push]
 	autoSetupRemote = true
 
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
 [credential]
 	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
