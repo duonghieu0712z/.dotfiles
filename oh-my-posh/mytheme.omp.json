@@ -3,7 +3,7 @@
     "console_title_template": "{{ if .Root }}Root - {{ end }}{{ if eq .PWD \"~\" }}Home{{ else }}{{ .Folder }}{{ end }}",
     "final_space": true,
     "shell_integration": true,
-    "auto_upgrade": true,
+    "auto_upgrade": false,
     "disable_notice": true,
     "version": 2,
     "blocks": [
@@ -71,7 +71,10 @@
                     "type": "os",
                     "style": "plain",
                     "foreground": "#26c6da",
-                    "template": "<#45f1c2>╰─</> {{ .Icon }}"
+                    "template": "<#45f1c2>╰─</> {{ .Icon }}",
+                    "properties": {
+                        "display_distro_name": true
+                    }
                 },
                 {
                     "type": "time",
