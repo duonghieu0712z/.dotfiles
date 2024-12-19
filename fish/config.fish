@@ -22,7 +22,9 @@ set -gxa CPPFLAGS "-I/opt/homebrew/opt/curl/include"
 set -gxa LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
 set -gxa CPPFLAGS "-I/opt/homebrew/opt/llvm/include"
 
-set -gx LDFLAGS "-L/opt/homebrew/opt/node@20/lib"
-set -gx CPPFLAGS "-I/opt/homebrew/opt/node@20/include"
+set -gx LDFLAGS "-L/opt/homebrew/opt/node/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/node/include"
+
+set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk@17/include"
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
