@@ -2,11 +2,11 @@
 	defaultBranch = main
 [user]
 	name = Hieu Cao
-	email = hieu.cao@seatudio.com
+	email = hieu.cao@enotion.io
 [core]
 	ignorecase = false
 	editor = code --wait
-	excludesfile = /Users/user/.gitignore_global
+	excludesfile = /Users/fe-hieu/.gitignore_global
 	autocrlf = true
 [alias]
 	adog = log --all --decorate --oneline --graph
@@ -31,6 +31,7 @@
 	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 	undo = reset --soft HEAD^
 	back = reset --hard HEAD^
+	rs = "!f() { git reset .; git clean -f .; git restore .; }; f"
 	slist = stash list
 	ssave = stash save
 	sapply = stash apply
@@ -58,6 +59,7 @@
 
 [http]
 	postBuffer = 524288000
+	version = HTTP/2
 [commit]
 	template = /Users/user/.stCommitMsg
 [filter "lfs"]
@@ -70,10 +72,10 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-
 [credential]
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
