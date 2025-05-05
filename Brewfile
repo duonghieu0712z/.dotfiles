@@ -26,12 +26,16 @@ brew 'bottom'
 # `brew install --cask`
 cask 'git-credential-manager'
 cask 'iterm2'
-cask 'codewhisperer'
+cask 'amazon-q'
 
 cask 'google-chrome'
+cask 'brave-browser'
 cask 'visual-studio-code'
-cask 'obsidian'
+cask 'docker'
+
+cask 'menumeters'
 cask 'telegram-desktop'
+cask 'obsidian'
 
 cask 'font-fira-code-nerd-font'
 # cask 'font-cascadia-code'
