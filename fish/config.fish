@@ -1,30 +1,28 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-set omp_theme '~/.config/oh-my-posh/mytheme.omp.json'
-oh-my-posh init fish --config $omp_theme | source
+if status is-interactive
+    set omp_theme ~/.config/oh-my-posh/mytheme.omp.json
+    oh-my-posh init fish --config $omp_theme | source
 
-zoxide init fish | source
+    zoxide init fish | source
+    fzf --fish | source
+    source (pyenv init -|psub)
 
-fzf --fish | source
+    set -gx EDITOR /usr/local/bin/code
+    set -gx VISUAL $EDITOR
 
-set -gx EDITOR '/usr/local/bin/code'
-set -gx VISUAL $EDITOR
+    set -gx FZF_DEFAULT_OPTS '--layout=reverse --border --preview="file --mime {} | grep -q text && bat --style=plain {} || hexdump -C {}"'
 
-set -gx FZF_DEFAULT_OPTS '--layout=reverse --border --preview="bat {}"'
+    set -l libs curl llvm node openjdk@17
+    for lib in $libs
+        set -l base /opt/homebrew/opt/$lib
+        if test -d $base/lib
+            set -gxa LDFLAGS -L$base/lib
+        end
+        if test -d $base/include
+            set -gxa CPPFLAGS -I$base/include
+        end
+    end
 
-set -gxa LDFLAGS "-L/opt/homebrew/opt/curl/lib"
-set -gxa CPPFLAGS "-I/opt/homebrew/opt/curl/include"
-
-set -gxa LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
-set -gxa CPPFLAGS "-I/opt/homebrew/opt/llvm/include"
-
-set -gx LDFLAGS "-L/opt/homebrew/opt/node/lib"
-set -gx CPPFLAGS "-I/opt/homebrew/opt/node/include"
-
-set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk@17/include"
-
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+    test -e "$HOME/.iterm2_shell_integration.fish"; and source "$HOME/.iterm2_shell_integration.fish"
+end

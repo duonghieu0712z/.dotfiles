@@ -1,3 +1,3 @@
-function ls --wraps=lsd --description 'alias ls=lsd'
-  lsd $argv
+function ls --wraps=lsd --description "Alias for 'lsd'"
+    lsd $argv
 end
