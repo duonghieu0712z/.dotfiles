@@ -7,6 +7,7 @@ cask_args appdir: "~/Applications", require_sha: true
 
 # `brew install`
 brew 'git'
+brew 'git-lfs'
 brew 'fish'
 brew 'oh-my-posh'
 brew 'tmux'
@@ -14,13 +15,30 @@ brew 'tmux'
 brew 'node'
 brew 'python'
 brew 'make'
+brew 'cmake'
+
+brew 'llvm'
+brew 'gcc'
+brew 'openjdk'
+brew 'pyenv'
+brew 'rustup'
+brew 'emscripten'
 
 brew 'lsd'
 brew 'zoxide'
+brew 'dos2unix'
+
 brew 'czg'
+
 brew 'fzf'
+brew 'bat'
+brew 'hexyl'
+
 brew 'ripgrep'
+
+brew 'curl'
 brew 'wget'
+
 brew 'bottom'
 
 # `brew install --cask`
@@ -32,6 +50,7 @@ cask 'google-chrome'
 cask 'brave-browser'
 cask 'visual-studio-code'
 cask 'docker'
+cask 'warp'
 
 cask 'menumeters'
 cask 'telegram-desktop'

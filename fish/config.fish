@@ -11,7 +11,7 @@ if status is-interactive
     set -gx EDITOR /usr/local/bin/code
     set -gx VISUAL $EDITOR
 
-    set -gx FZF_DEFAULT_OPTS '--layout=reverse --border --preview="file --mime {} | grep -q text && bat --style=plain {} || hexdump -C {}"'
+    set -gx FZF_DEFAULT_OPTS '--style=full --layout=reverse --border --preview="~/.config/fzf/preview.sh {}"'
 
     set -l libs curl llvm node openjdk@17
     for lib in $libs
