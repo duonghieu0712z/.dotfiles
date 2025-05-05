@@ -1,6 +1,6 @@
 function d2u -d "Convert all files in a folder from CRLF to LF"
     if test (count $argv) -eq 0
-        echo "Usage: convert-dos2unix <directory>"
+        echo "Usage: d2u <directory>"
         return 1
     end
 
