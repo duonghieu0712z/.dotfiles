@@ -82,8 +82,7 @@
             "segments": [
                 {
                     "properties": {
-                        "cache_duration": "none",
-                        "display_distro_name": true
+                        "cache_duration": "none"
                     },
                     "template": "<#45f1c2>╰─</> {{ .Icon }}",
                     "foreground": "#26c6da",
