@@ -28,8 +28,8 @@ if status is-interactive
         end
     end
 
-    set -gx ANDROID_HOME /Users/fe-hieu/Library/Android/sdk
-    set -gx PATH /Users/fe-hieu/Library/Android/sdk/emulator /Users/fe-hieu/Library/Android/sdk/cmdline-tools/latest/bin /Users/fe-hieu/Library/Android/sdk/platform-tools $PATH
+    set -gx ANDROID_HOME $HOME/Library/Android/sdk
+    set -gx PATH $ANDROID_HOME/emulator $ANDROID_HOME/cmdline-tools/latest/bin $ANDROID_HOME/platform-tools $PATH
 
     test -e "$HOME/.iterm2_shell_integration.fish"; and source "$HOME/.iterm2_shell_integration.fish"
 end
