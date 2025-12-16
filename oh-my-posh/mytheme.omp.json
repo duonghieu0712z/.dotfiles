@@ -13,17 +13,13 @@
             "alignment": "left",
             "segments": [
                 {
-                    "properties": {
-                        "cache_duration": "none"
-                    },
                     "template": "<#45f1c2>╭─</>  󰄽{{ .UserName }}󰄾",
                     "foreground": "#d0666f",
                     "type": "session",
                     "style": "plain"
                 },
                 {
-                    "properties": {
-                        "cache_duration": "none",
+                    "options": {
                         "folder_icon": " ",
                         "folder_separator_icon": "/",
                         "home_icon": " ",
@@ -35,12 +31,10 @@
                     "style": "plain"
                 },
                 {
-                    "properties": {
+                    "options": {
                         "branch_icon": "",
-                        "cache_duration": "none",
                         "cherry_pick_icon": " ",
                         "commit_icon": " ",
-                        "fetch_stash_count": true,
                         "fetch_status": true,
                         "fetch_upstream_icon": true,
                         "merge_icon": " ",
@@ -73,28 +67,20 @@
             "alignment": "left",
             "segments": [
                 {
-                    "properties": {
-                        "cache_duration": "none"
-                    },
                     "template": "<#45f1c2>╰─</> {{ .Icon }}",
                     "foreground": "#26c6da",
                     "type": "os",
                     "style": "plain"
                 },
                 {
-                    "properties": {
-                        "cache_duration": "none",
-                        "time_format": "15:04:05"
-                    },
                     "template": " [{{ .CurrentDate | date .Format }}]",
                     "foreground": "#007acc",
                     "type": "time",
                     "style": "plain"
                 },
                 {
-                    "properties": {
+                    "options": {
                         "always_enabled": true,
-                        "cache_duration": "none",
                         "style": "roundrock"
                     },
                     "template": " <d><#c0c0c0>—</> <i>{{ .FormattedMs }}</i></d>",
@@ -103,9 +89,8 @@
                     "style": "plain"
                 },
                 {
-                    "properties": {
-                        "always_enabled": true,
-                        "cache_duration": "none"
+                    "options": {
+                        "always_enabled": true
                     },
                     "template": " <d>{{ if gt .Code 0 }}{{ else }}{{ end }}</d>",
                     "foreground": "green",
@@ -114,7 +99,7 @@
                     "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"]
                 },
                 {
-                    "properties": {
+                    "options": {
                         "cache_duration": "none"
                     },
                     "template": " ",
@@ -123,7 +108,7 @@
                     "style": "plain"
                 },
                 {
-                    "properties": {
+                    "options": {
                         "cache_duration": "none"
                     },
                     "template": "  {{ .Version }}",
@@ -139,7 +124,7 @@
             "alignment": "left",
             "segments": [
                 {
-                    "properties": {
+                    "options": {
                         "cache_duration": "none"
                     },
                     "template": " <f>❯</f>",
