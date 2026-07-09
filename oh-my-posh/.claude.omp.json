@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#d97757",
+          "template": "λ "
+        },
+        {
+          "options": {
+            "folder_icon": " ",
+            "folder_separator_icon": "/",
+            "home_icon": " ",
+            "style": "folder"
+          },
+          "template": "{{ .Path }}",
+          "foreground": "#5faae8",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "branch_icon": "",
+            "cherry_pick_icon": " ",
+            "commit_icon": " ",
+            "fetch_push_status": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "merge_icon": " ",
+            "no_commits_icon": "󰜛",
+            "rebase_icon": " ",
+            "revert_icon": " ",
+            "status_formats": {
+              "Added": " %d ",
+              "Deleted": " %d ",
+              "Modified": " %d ",
+              "Unmerged": "󰽜 %d ",
+              "Untracked": " %d "
+            },
+            "tag_icon": " "
+          },
+          "template": " on {{ if not .UpstreamGone }}{{ .UpstreamIcon }} {{ end }}{{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} <#bf0000>  {{ .Working.String }}</>{{ end }}{{ if and .Working.Changed .Staging.Changed }} |{{ end }}{{ if .Staging.Changed }} <#bf4500>  {{ .Staging.String }}</>{{ end }}{{ if and (or .Working.Changed .Staging.Changed ) (or (gt .StashCount 0) (gt .WorktreeCount 0)) }} |{{ end }}<#7fffd4>{{ if gt .StashCount 0}}  {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}}  {{ .WorktreeCount }}{{ end }}</>",
+          "foreground": "green",
+          "type": "git",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if or .Working.Changed .Staging.Changed }}#ffeb3b{{ end }}",
+            "{{ if or (gt .Ahead 0) (gt .Behind 0) }}#b388ff{{ end }}"
+          ]
+        },
+        {
+          "type": "claude",
+          "style": "plain",
+          "template": " <#d97757>│󰯉 {{ .Model.DisplayName }}<#6c6e76>{{ if .Effort.Level }}  {{ .Effort.Level }}{{ end }}{{ if .FastMode }} 󱐌{{ end }}{{ if .Thinking.Enabled }} {{ end }} · <#74c0fc>ctx: {{ if lt .TokenUsagePercent 50 }}<#69db7c>{{ else if lt .TokenUsagePercent 80 }}<#ffd43b>{{ else }}<#ff6b6b>{{ end }}{{ .TokenGaugeUsed }} {{ .TokenUsagePercent }}%</><#6c6e76> · <#74c0fc>5h:{{ if lt .FiveHourUsage 50 }}<#69db7c>{{ else if lt .FiveHourUsage 80 }}<#ffd43b>{{ else }}<#ff6b6b>{{ end }} {{ .FiveHourGauge }} {{ .FiveHourUsage }}%</><#6c6e76> · <#74c0fc>7d:{{ if lt .SevenDayUsage 50 }}<#69db7c>{{ else if lt .SevenDayUsage 80 }}<#ffd43b>{{ else }}<#ff6b6b>{{ end }} {{ .SevenDayGauge }} {{ .SevenDayUsage }}%</>"
+        }
+      ]
+    }
+  ],
+  "version": 4
+}
