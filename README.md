@@ -1,20 +1,30 @@
 # Dotfiles
 
-Personal macOS dotfiles for Homebrew bundle, Fish shell, Git, Oh My Posh, fzf, tmux, and related app configuration.
+Personal dotfiles for macOS and Windows. The repository keeps package manifests, shell profiles, terminal themes, prompt themes, Git configuration, and small CLI helpers in one place.
 
-## Install packages
+## Repository layout
 
-Run the install script from the repository root:
+| Path | Platform | Purpose |
+| :--- | :--- | :--- |
+| `homebrew/Brewfile` | macOS | Homebrew package and cask manifest |
+| `homebrew/install.sh` | macOS | Homebrew bootstrap and `brew bundle` runner |
+| `scoop/Scoopfile.ps1` | Windows | Scoop bucket, package, font, and module manifest |
+| `scoop/install.ps1` | Windows | Scoop bootstrap, package installer, and Windows dotfiles applier |
+| `fish/` | macOS | Fish shell config, functions, completions, and plugins |
+| `fzf/` | macOS | fzf preview helper |
+| `git/` | macOS, Windows | Shared Git configuration |
+| `iterm2/` | macOS | iTerm2 settings |
+| `oh-my-posh/` | macOS, Windows | Oh My Posh themes |
+| `powershell/` | Windows | PowerShell profile and Windows Terminal settings |
+| `tmux/` | macOS | tmux local configuration |
+
+## macOS setup
+
+Run the Homebrew installer from the repository root:
 
 ```bash
-./install.sh
+./homebrew/install.sh
 ```
-
-The script checks whether Homebrew is already installed. If `brew` is missing, it installs Homebrew with the official installer, then runs `brew bundle` with the repository `Brewfile`.
-
-The `Brewfile` is grouped by package category: developer tools, shell utilities, runtimes, media tools, workflow tools, AI CLIs, desktop apps, browsers, productivity apps, JDK casks, and fonts.
-
-## Set up Fish shell
 
 After installing packages, switch the default shell to Fish:
 
@@ -30,54 +40,41 @@ mkdir -p ~/.config/fish
 cp -R fish/. ~/.config/fish/
 ```
 
-## Set up Git
-
-Link the repository Git configuration into the home directory:
+Link shared config files:
 
 ```bash
 ln -sf "$PWD/git/.gitconfig" ~/.gitconfig
-```
-
-## Set up Oh My Posh
-
-Create the config directory and link the main theme:
-
-```bash
 mkdir -p ~/.config/oh-my-posh
 ln -sf "$PWD/oh-my-posh/mytheme.omp.json" ~/.config/oh-my-posh/mytheme.omp.json
-```
-
-If using the separate Claude theme, link it as well:
-
-```bash
-ln -sf "$PWD/oh-my-posh/.claude.omp.json" ~/.config/oh-my-posh/.claude.omp.json
-```
-
-## Set up tmux
-
-Link the local tmux configuration:
-
-```bash
 ln -sf "$PWD/tmux/tmux.conf.local" ~/.tmux.conf.local
 ```
 
+## Windows setup
+
+Run the Scoop installer from the repository root:
+
+```powershell
+.\scoop\install.ps1
+```
+
+The script installs Scoop if needed, adds buckets from `scoop/Scoopfile.ps1`, installs configured packages and PowerShell modules, then applies the PowerShell profile, Oh My Posh theme, Git config, and Windows Terminal settings.
+
 ## Verify
 
-Check the Homebrew bundle:
+Check the Homebrew bundle on macOS:
 
 ```bash
-brew bundle check --file="$PWD/Brewfile"
+brew bundle check --file="$PWD/homebrew/Brewfile"
 ```
 
-Check Fish:
+Check Scoop on Windows:
 
-```bash
-fish --version
+```powershell
+scoop status
 ```
 
-Check Oh My Posh:
+Check the prompt engine:
 
 ```bash
 oh-my-posh --version
 ```
-

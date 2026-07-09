@@ -59,14 +59,6 @@
             "{{ if or .Working.Changed .Staging.Changed }}#ffeb3b{{ end }}",
             "{{ if or (gt .Ahead 0) (gt .Behind 0) }}#b388ff{{ end }}"
           ]
-        },
-        {
-          "options": {
-            "cache_duration": "none"
-          },
-          "template": "  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
-          "type": "python",
-          "style": "plain"
         }
       ],
       "newline": true

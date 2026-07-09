@@ -1,14 +1,17 @@
-[init]
-	defaultBranch = main
-[user]
-	name = Hieu Cao
-	email = hieu.0479@enotion.io
 [core]
 	ignorecase = false
 	editor = code --wait
-	excludesfile = /Users/fe-hieu/.gitignore_global
+	excludesfile = # gitignore global
+	longpaths = true
 	autocrlf = input
 	pager = delta
+[user]
+	name = '' # your name
+	email = '' #your email
+
+[init]
+	defaultBranch = main
+
 [alias]
 	adog = log --all --decorate --oneline --graph
 	rank = shortlog -sn --no-merges
@@ -42,6 +45,20 @@
 	sclear = stash clear
 	parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
 
+[color]
+	ui = auto
+[push]
+	followTags = true
+	autoSetupRemote = true
+[safe]
+	directory = *
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
 [mergetool]
 	prompt = true
 	keepBackup = false
@@ -59,13 +76,3 @@
 	cmd = code --wait --merge $LOCAL $REMOTE $BASE $MERGED
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
-
-[commit]
-	template = /Users/user/.stCommitMsg
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[push]
-	autoSetupRemote = true
