@@ -2,12 +2,13 @@
 	defaultBranch = main
 [user]
 	name = Hieu Cao
-	email = hieu.cao@enotion.io
+	email = hieu.0479@enotion.io
 [core]
 	ignorecase = false
 	editor = code --wait
 	excludesfile = /Users/fe-hieu/.gitignore_global
-	autocrlf = true
+	autocrlf = input
+	pager = delta
 [alias]
 	adog = log --all --decorate --oneline --graph
 	rank = shortlog -sn --no-merges
@@ -20,6 +21,7 @@
 	new = co -b
 	del = br -D
 	cp = cherry-pick
+	clear = clean -dfX
 	subclone = submodule update --init
 	subeach = submodule foreach
 	subco = subeach git co
@@ -29,8 +31,8 @@
 	sq = squash
 	ours = "!f() { git co --ours $@ && git add $@; }; f"
 	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
-	undo = reset --soft HEAD^
-	back = reset --hard HEAD^
+	undo = "!f() { git reset --soft HEAD~$1; }; f"
+	back = "!f() { git reset --hard HEAD~$1; }; f"
 	rs = "!f() { git reset .; git clean -f .; git restore .; }; f"
 	slist = stash list
 	ssave = stash save
@@ -49,6 +51,7 @@
 
 [merge]
 	tool = vscode
+	conflictStyle = zdiff3
 [diff]
 	tool = vscode
 
@@ -57,9 +60,6 @@
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 
-[http]
-	postBuffer = 524288000
-	version = HTTP/2
 [commit]
 	template = /Users/user/.stCommitMsg
 [filter "lfs"]
@@ -69,14 +69,3 @@
 	required = true
 [push]
 	autoSetupRemote = true
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
-[credential "https://dev.azure.com"]
-	useHttpPath = true
