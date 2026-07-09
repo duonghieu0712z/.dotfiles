@@ -1,63 +1,123 @@
-# `brew tap`
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
+developer_tools = %w[
+  cmake
+  coreutils
+  curl
+  dos2unix
+  gcc
+  gh
+  git
+  git-delta
+  git-lfs
+  llvm
+  make
+  wget
+]
 
-# set arguments for all 'brew install --cask' commands
-cask_args appdir: "~/Applications", require_sha: true
+shell_tools = %w[
+  bat
+  btop
+  fd
+  fish
+  fzf
+  hexyl
+  htop
+  jq
+  lsd
+  oh-my-posh
+  tlrc
+  tmux
+  zoxide
+]
 
-# `brew install`
-brew 'git'
-brew 'git-lfs'
-brew 'fish'
-brew 'oh-my-posh'
-brew 'tmux'
+runtimes = %w[
+  jenv
+  node
+  node@22
+  nvm
+  openjdk@11
+  openjdk@17
+  ruby
+  rustup
+]
 
-brew 'node'
-brew 'python'
-brew 'make'
-brew 'cmake'
+media_tools = %w[
+  ffmpeg
+]
 
-brew 'llvm'
-brew 'gcc'
-brew 'openjdk'
-brew 'pyenv'
-brew 'rustup'
-brew 'emscripten'
+workflow_tools = %w[
+  czg
+]
 
-brew 'lsd'
-brew 'zoxide'
-brew 'dos2unix'
+ai_cli_tools = %w[
+  claude-code@latest
+  codex
+  kiro-cli
+]
 
-brew 'czg'
+developer_tools.each { |name| brew name }
+shell_tools.each { |name| brew name }
+runtimes.each { |name| brew name }
+media_tools.each { |name| brew name }
+workflow_tools.each { |name| brew name }
+ai_cli_tools.each { |name| brew name }
 
-brew 'fzf'
-brew 'bat'
-brew 'hexyl'
+cask_args appdir: "~/Applications"
 
-brew 'ripgrep'
+developer_apps = %w[
+  android-studio
+  docker-desktop
+  fork
+  git-credential-manager
+  iterm2
+  visual-studio-code
+  zed
+]
 
-brew 'curl'
-brew 'wget'
+browsers = %w[
+  brave-browser
+  google-chrome
+]
 
-brew 'bottom'
+productivity_apps = %w[
+  alt-tab
+  appcleaner
+  bitwarden
+  dockdoor
+  doll
+  menumeters
+  notion
+  obsidian
+  openkey
+  raycast
+  telegram-desktop
+  tunnelblick
+]
 
-# `brew install --cask`
-cask 'git-credential-manager'
-cask 'iterm2'
-cask 'amazon-q'
+ai_apps = %w[
+  chatgpt
+  claude
+  codex-app
+]
 
-cask 'google-chrome'
-cask 'brave-browser'
-cask 'visual-studio-code'
-cask 'docker'
-cask 'warp'
+communication_apps = %w[
+  discord
+]
 
-cask 'menumeters'
-cask 'telegram-desktop'
-cask 'obsidian'
+java_casks = %w[
+  temurin@21
+  zulu@8
+]
 
-cask 'font-fira-code-nerd-font'
-# cask 'font-cascadia-code'
-cask 'font-caskaydia-cove-nerd-font'
-# cask 'font-jetbrains-mono-nerd-font'
-cask 'font-powerline-symbols'
+fonts = %w[
+  font-caskaydia-cove-nerd-font
+  font-fira-code-nerd-font
+  font-powerline-symbols
+]
+
+developer_apps.each { |name| cask name }
+browsers.each { |name| cask name }
+productivity_apps.each { |name| cask name }
+ai_apps.each { |name| cask name }
+communication_apps.each { |name| cask name }
+java_casks.each { |name| cask name }
+fonts.each { |name| cask name }
